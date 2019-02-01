@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,6 +40,9 @@ public class Robot extends IterativeRobot {
   private static final int PWM_FL = 1;
   private static final int PWM_BR = 3;
   private static final int PWM_BL = 4;
+  private DifferentialDrive train;
+  private Joystick joy;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -52,6 +58,8 @@ public class Robot extends IterativeRobot {
     SC_BL = new VictorSP(PWM_BL);
     rightGroup = new SpeedControllerGroup(SC_FR, SC_BR);
     leftGroup = new SpeedControllerGroup(SC_FL, SC_BL);
+    train = new DifferentialDrive(leftGroup, rightGroup);
+    joy = new Joystick(5);
   }
 
   /**
@@ -108,9 +116,11 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void teleopPeriodic() {
-
+    //drive.start();
   }
-
+  //public void drive(double xSpeed, double zRotation){
+   // train.arcadeDrive(xSpeed, zRotation);
+  //}
   /**
    * This function is called periodically during test mode.
    */
