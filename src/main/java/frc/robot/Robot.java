@@ -116,11 +116,14 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void teleopPeriodic() {
-    //drive.start();
+    train.driveCurve(joy.getY(), joy.getX(), true);
   }
-  //public void drive(double xSpeed, double zRotation){
-   // train.arcadeDrive(xSpeed, zRotation);
-  //}
+  public void drive(double speed, double rotation){
+    train.arcadeDrive(speed, rotation);
+  }
+  public void driveCurve(double speed, double rotation, boolean turnInPlace){
+    train.curvatureDrive(speed, rotation, turnInPlace);
+  }
   /**
    * This function is called periodically during test mode.
    */
